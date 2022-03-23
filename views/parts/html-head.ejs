@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title><%= title %></title>
+<meta name="viewport" content="width=device-width,initial-scale:1">
+<meta name="keywords" content="貓咪,喵咪,喵星人,貓咪介紹,曬貓,貓用品,貓砂,貓飼料">
+<meta name="description" content="介紹我家的貓咪們！還有大量可愛的貓照片。也有貓用品選貨店，致力於引進各種優良、高質感的寵物品牌及商品， 讓貓老大們享受溫飽的同時，也感受到身為一家人的溫暖。">
+<link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="fontawesome/css/all.css">
+<link rel="icon" href="/public/favicon.ico" type="image/x-icon"/>
+<style>
+    @charset "utf-8";
+
+/*圖片伸縮設定*/
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*視窗背景色設定*/
+body {
+  background: #fbf9cc url("http://localhost:3000/img/bg.png") repeat-x;
+}
+
+/*連結顏色設定*/
+a {
+  color: #df4839;
+}
+a:hover {
+  color: #ff705b;
+  text-decoration: none;
+}
+
+/*頁首,導覽,頁尾的共通設定*/
+header,nav,footer {
+  text-align: center;
+}
+
+/*導覽樣式設定*/
+.menu {
+  margin: 0;
+  padding: 0;
+}
+.menu li {
+  list-style-type: none;
+  display: inline-block;
+  width: 180px;
+  margin: 0 10px;
+}
+.menu a {
+  display: block;
+  padding: 10px;
+  background: #6fbb9a;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+}
+.menu a:hover {
+  background: #90ddbb;
+}
+
+/*頁面標題設定*/
+h1 {
+  width: 300px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 5px solid #95dbbd;
+  background-color: #6fbb9a;
+  color: #fff;
+  font-size: 300%;
+  text-align: center;
+  line-height: 1;
+  border-radius: 50%;
+  text-shadow: 1px 1px 2px #307657;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-image: linear-gradient(to bottom, #6fbb9a, #4a9d79);
+  font-family: 'Limelight', cursive;
+}
+
+/*次標題設定*/
+.h {
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px dotted #94c8b1;
+  border-left: 10px solid #d0e35b;
+  color: #6fbb9a;
+  border-radius: 5px 0 0 5px;
+}
+
+
+/*小標題設定*/
+.h-sub {
+  padding: 10px;
+  background-color: #fbf9cc;
+  color: #ff705b;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 2px #ffd0ad inset;
+}
+.h-sub span{
+  font-weight: normal;
+}
+
+/*內容區塊邊框設定*/
+#contents {
+  box-sizing: border-box;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 4% 8%;
+  border: 1px solid #f6bb9a;
+  background-color: #fff;
+}
+
+/*貓咪照片寬度*/
+#cats img {
+  width: 60%;
+}
+
+/*「更多介紹」連結設定*/
+.more {
+  text-align: right;
+}
+.more::after {
+  content: url(/img/ico_arrow.png);
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/*連結圖示設定*/
+a[target="_blank"]::after {
+  content: url(/img/ico_blank.png);
+  margin-left: 5px;
+  vertical-align: middle;
+}
+a[href^="mailto:"]::after {
+  content: url(/img/ico_mail.png);
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/*區塊間分隔*/
+#contents > section + section {
+  margin-top: 80px;
+}
+
+/*文繞圖設定*/
+.imgL {
+  float: left;
+  margin-right: 20px;
+}
+.imgR {
+  float: right;
+  margin-left: 20px;
+}
+.clear {
+  clear: both;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*圓形圖片設定*/
+.img-round {
+  border-radius: 50%;
+}
+
+/*640px以下的版面調整*/
+@media screen and (max-width: 640px) {
+  
+  /*選單*/
+  .menu li {
+    display: block;
+    width: 60%;
+    margin: 0 auto 10px;
+  }
+  
+  /*飼主介紹*/
+  #profile img.imgL {
+    float: none;
+  }
+  #profile {
+    text-align: center;
+  }
+  #profile h2,
+  #profile dl {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  /*標題*/
+  h1 {
+    width: 200px;
+    font-size: 200%;
+  }
+}
+
+/*表格設定*/
+.entryTable {
+  width: 100%;
+  margin-bottom: 30px;
+  border: 2px solid #f6bb9e;
+  border-collapse: collapse;
+}
+.entryTable th,
+.entryTable td {
+  padding: 10px 20px;
+  border: 1px solid #f6bb9e;
+}
+.entryTable th {
+  width: 10em;
+  background-color: #ffeeee;
+  text-align: left;
+}
+.entryTable caption {
+  margin-bottom: 10px;
+}
+
+/*輸入表單設定*/
+.entryTable input[type="text"],
+.entryTable input[type="email"],
+.entryTable textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+.entryTable input[type="text"]:focus,
+.entryTable input[type="email"]:focus,
+.entryTable textarea:focus {
+  background-color: #ffffee;
+  outline: none;
+  border-left: 5px solid #ffa700;
+}
+
+/*滑鼠指標樣式*/
+label,
+input,
+textarea,
+select {
+  cursor: pointer;
+}
+
+/*按鈕設定*/
+.entryBtns {
+  text-align: center;
+}
+/*
+.entryBtns input {
+  width: 100px;
+}
+*/
+
+/*按鈕基本樣式*/
+.entryBtns input {
+  width: 200px;
+  margin: 0 10px;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #f6bb9e;
+  border-radius: 10px;
+  font-size: 1em;
+  -webkit-appearance: none;
+}
+
+/*送出按鈕的樣式*/
+.entryBtns input[type="submit"] {
+  background: #fadccc;
+}
+
+/*滑鼠移到按鈕時*/
+.entryBtns input:hover {
+  opacity: 0.7;
+}
+
+.navbar .nav-item .nav-link.active{
+    background-color: rgb(98, 155, 240);
+    color: white;
+    font-weight: 400;
+    border-radius: 5px;
+
+
+    
+
+
+</style>
+
+</head>
+    
+<body>

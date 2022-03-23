@@ -1,0 +1,63 @@
+<%- include('parts/html-head') %>
+<%- include('parts/navbar') %>
+
+<div class="container" style="margin-top:50px">
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">品名</th>
+                    <th scope="col">品牌</th>
+                    <th scope="col">價格</th>
+                    <th scope="col">數量/修改</th>
+                    <th scope="col">刪除</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(let i of cart){ 
+                    const item = dict[i.sid]; // 拿到對應的項目
+                    %>
+                  <tr data-sid="<%= item.sid %>">
+                    <td><%= item.brand %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.price %></td>
+                    <td>
+                        <input class="qty" type="number" min="1" value="<%= item.quantity %>">
+                        </td>
+                    <td><button onclick="deleteItem(<%= item.sid %>, event)">刪除</button></td>
+                  </tr>
+                  <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<%- include('parts/scripts') %>
+<script>
+    function deleteItem(sid, event){
+        const me = event.target;
+        const tr = $(me.closest('tr'));
+        $.post('/cart/del', {sid}, function(data){
+            console.log(data);
+            tr.remove(); // 移除 DOM 裡的元素
+        }, 'json');
+    }
+
+    $('input.qty').on('change', function(event){
+        const me = $(this);
+        const sid = +me.closest('tr').attr('data-sid');
+        const qty = +me.val();
+
+        //console.log({sid, qty});
+        $.post('/cart/set', {sid, qty}, function(data){
+            console.log(data);
+        }, 'json');
+    });
+
+</script>
+<%- include('parts/html-foot') %>

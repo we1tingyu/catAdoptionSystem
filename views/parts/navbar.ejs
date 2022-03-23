@@ -1,0 +1,34 @@
+<header>
+  <h1>FUFU-CAT Web</h1>
+  <p>介紹一下我家的貓貓們！</p>
+</header>
+
+<nav>
+  <ul class="menu">
+    <li>
+      <a class="nav-link <%= pageName==='home' ? 'active' : '' %> " href="/">首頁</a>
+    </li>
+    <li>
+      <a class="nav-link <%= pageName==='json-sales' ? 'active' : '' %>" href="/#cats">我家的貓咪</a>
+    </li>
+    <li>
+      <a class="nav-link <%= pageName==='ab-list' ? 'active' : '' %>" href="/#profile">飼主介紹</a>
+    </li>
+    <li>
+      <a class="nav-link <%= pageName==='ab-add' ? 'active' : '' %>" href="/catlist">我要養貓貓</a>
+    </li>
+    <li>
+      <a class="nav-link <%= pageName==='product-list' ? 'active' : '' %>" href="/product-list">貓貓用品</a>
+    </li>
+    <li>
+      <a class="nav-link <%= pageName==='cart-list' ? 'active' : '' %>" href="/cart/list">購物車</a>
+    </li>
+
+    <li>
+      <a class="nav-link <%= pageName==='cart-list' ? 'active' : '' %>" href="/entry.html">分享貓貓</a>
+    </li>
+  </ul>
+
+
+  </ul>
+</nav>
